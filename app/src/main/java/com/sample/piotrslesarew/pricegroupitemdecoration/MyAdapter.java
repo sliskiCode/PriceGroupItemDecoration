@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderAdapter;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements StickyHeaderAdapter<MyAdapter.HeaderHolder> {
+class MyAdapter
+        extends RecyclerView.Adapter<MyAdapter.ViewHolder>
+        implements PriceGroupItemDecoration.HeaderAdapter<MyAdapter.HeaderHolder> {
 
     private Color[] data;
 
@@ -44,8 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     }
 
     @Override
-    public void onBindHeaderViewHolder(HeaderHolder viewholder, int position) {
-        ((TextView) viewholder.itemView).setText(String.valueOf(data[position].getPrice()));
+    public void onBindHeaderViewHolder(HeaderHolder viewHolder, int position) {
+        ((TextView) viewHolder.itemView).setText(String.valueOf(data[position].getPrice()));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

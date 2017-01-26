@@ -10,8 +10,6 @@ import static android.R.color.darker_gray;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView swatches;
-
     @SuppressWarnings("ResourceAsColor")
     private Color[] data = new Color[]{
             new Color(darker_gray, 20.0),
@@ -30,27 +28,17 @@ public class MainActivity extends AppCompatActivity {
             new Color(black, 50.0),
             new Color(darker_gray, 50.0),
             new Color(black, 50.0),
-            new Color(darker_gray, 60.0),
-            new Color(black, 60.0),
-            new Color(darker_gray, 60.0),
-            new Color(black, 60.0),
-            new Color(darker_gray, 60.0),
-            new Color(black, 60.0),
-            new Color(darker_gray, 60.0),
-            new Color(black, 60.0),
-            new Color(darker_gray, 60.0),
-            new Color(black, 60.0)
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        swatches = ((RecyclerView) findViewById(R.id.recycler));
+        RecyclerView swatches = ((RecyclerView) findViewById(R.id.recycler));
+        MyAdapter adapter = new MyAdapter(data);
+
         swatches.setHasFixedSize(true);
         swatches.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        MyAdapter adapter = new MyAdapter(data);
         swatches.setAdapter(adapter);
         swatches.addItemDecoration(new PriceGroupItemDecoration(adapter));
     }

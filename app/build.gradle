@@ -24,7 +24,6 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support:recyclerview-v7:$support_version"
-    compile 'ca.barrenechea.header-decor:header-decor:0.2.8'
 
     testCompile 'junit:junit:4.12'
 }

@@ -6,14 +6,13 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderAdapter;
 
 class PriceGroupItemDecoration extends RecyclerView.ItemDecoration {
 
-    private StickyHeaderAdapter adapter;
+    private HeaderAdapter adapter;
     private Paint paint = new Paint();
 
-    PriceGroupItemDecoration(MyAdapter adapter) {
+    PriceGroupItemDecoration(HeaderAdapter adapter) {
         this.adapter = adapter;
         paint.setColor(android.graphics.Color.GRAY);
         paint.setStrokeWidth(6f);
@@ -147,5 +146,12 @@ class PriceGroupItemDecoration extends RecyclerView.ItemDecoration {
         View nextChild = parent.getChildAt(layoutPos + 1);
         int nextAdapterPos = parent.getChildAdapterPosition(nextChild);
         return adapter.getHeaderId(nextAdapterPos);
+    }
+
+    interface HeaderAdapter<T extends RecyclerView.ViewHolder> {
+
+        long getHeaderId(int position);
+        T onCreateHeaderViewHolder(ViewGroup parent);
+        void onBindHeaderViewHolder(T viewHolder, int position);
     }
 }
