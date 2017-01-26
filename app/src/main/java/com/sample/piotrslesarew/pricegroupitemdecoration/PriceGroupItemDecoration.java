@@ -59,8 +59,9 @@ class PriceGroupItemDecoration extends RecyclerView.ItemDecoration {
                     drawGroupEndingLineIfNeeded(canvas, childRight, count, headerHeight, headerId, layoutPos, parent);
                 }
 
-                canvas.restore();
             }
+
+            canvas.restore();
         }
     }
 
